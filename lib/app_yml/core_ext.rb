@@ -1,9 +1,9 @@
 class Hash
   # Allows us to override app.yml settings from the 'all' environment with the current environment with unlimited nesting
-  def deep_update new_hash={}
+  def deep_update! new_hash={}
     new_hash.each_pair do |key, val|
       if val.class.eql? Hash
-        self[key].deep_update val
+        self[key].deep_update! val
       else
         self[key] = val
       end

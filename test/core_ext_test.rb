@@ -33,7 +33,7 @@ class CoreExtTest < Test::Unit::TestCase
   
   def test_hash_deep_update
     all_hash_copy = Marshal.load Marshal.dump @@all_hash # Make a deep copy of @@all_hash (so that it maintains its state for subsequent tests)
-    all_hash_copy.deep_update @@dev_hash
+    all_hash_copy.deep_update! @@dev_hash
     app_hash = HashWithIndifferentAccess.new all_hash_copy
     
     assert_equal 'admin@localhost', app_hash.emails.admin
