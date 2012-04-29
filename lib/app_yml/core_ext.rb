@@ -41,3 +41,30 @@ module ActiveSupport
     end
   end
 end
+
+
+
+
+
+
+
+
+require 'action_controller'  # Ensure ActionController::Base is defined
+
+ActionController::Base.class_eval do
+  private
+
+  # Private: Refreshes app.yml settings if they've changed.
+  #
+  # Provides a global App object holding project-wide settings.
+  def _reload_app_yml
+    #AppYml::build_settings_hash
+  end
+end
+
+ActionController::Base.instance_eval do
+  helper_method :_reload_app_yml
+
+  # Thanks to http://hemju.com/2011/02/11/rails-3-quicktip-auto-reload-lib-folders-in-development-mode/ for this idea
+  before_filter :_reload_app_yml, :if => Proc.new { defined? AppYml }
+end
