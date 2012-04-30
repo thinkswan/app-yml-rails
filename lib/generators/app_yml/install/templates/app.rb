@@ -1,5 +1,5 @@
 # Thanks to http://sickpea.com/2009/6/rails-app-configuration-in-10-lines for this idea
-module AppYml
+module App
   # Causes App.arg to call App[arg]
   #
   # Eg: App.country would call App[:country]
