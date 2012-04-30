@@ -13,11 +13,11 @@ This gem provides a Rails application with project-wide settings via an **app.ym
 
 Add the following line to your project's **Gemfile**:
 
-  gem 'app-yml-rails'
+    gem 'app-yml-rails'
 
 Install the config and initializer files:
 
-  $ rails generate app_yml:install
+    $ rails generate app_yml:install
 
 ## Usage
 
