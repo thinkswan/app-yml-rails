@@ -14,6 +14,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+Gemfile.lock
 *.DS_Store*
 pkg/
 test/dummy/db/*.sqlite3
