@@ -22,7 +22,7 @@ module AppYml
     @@settings = yaml['all']
 
     # Merge in settings from the current environment's section, giving the environment's settings precedence
-    @@settings.deep_update! yaml[Rails.env]
+    @@settings.deep_update! yaml[Rails.env] || {}
 
     # Allow this hash's data to be accessed with both strings and symbols
     @@settings = HashWithIndifferentAccess.new @@settings
