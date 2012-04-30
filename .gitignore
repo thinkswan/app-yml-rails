@@ -20,3 +20,5 @@ test/dummy/db/*.sqlite3
 test/dummy/log/*.log
 test/dummy/tmp/
 test/dummy/.sass-cache
+test/dummy/config/app.yml
+test/dummy/config/initializers/app.rb
