@@ -7,16 +7,21 @@ require "app_yml/version"
 Gem::Specification.new do |s|
   s.name        = "app_yml"
   s.version     = AppYml::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of AppYml."
-  s.description = "TODO: Description of AppYml."
+  s.platform    = Gem::Platform::RUBY
+  s.authors     = [ "Graham Swan" ]
+  s.email       = [ "thinkswan@gmail.com" ]
+  s.homepage    = "https://github.com/thinkswan/app-yml-rails"
+  s.summary     = "The easiest way to maintain project-wide settings. (Eg: App.emails.sales_email will return 'sales@example.com' anywhere in your app)"
+  s.description = "An awesome app.yml gem for Rails. Supports App.settings.nested_setting syntax, all/production/staging/development/test environments, and auto-reloads app.yml changes without requiring an application restart."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+
+
+
+  s.summary = "Use backbone.js with rails 3.1"
+  s.description = "Quickly setup backbone.js for use with rails 3.1. Generators are provided to quickly get started."
+
+
+
+  s.files = Dir["{lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md", "CHANGELOG.md"]
   s.test_files = Dir["test/**/*"]
-
-  s.add_dependency "rails", "~> 3.2.3"
-
-  s.add_development_dependency "mysql2"
 end
