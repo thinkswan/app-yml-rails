@@ -8,7 +8,7 @@ module AppYml
     class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path("../templates", __FILE__)
   
-      desc "Creates an app.yml config file in config/app.yml and an app.rb initializer (providing access to the App constant) in config/initializers/app.rb."
+      desc "Creates an app.yml config file in 'config/app.yml' and an app.rb initializer (providing access to the App constant) in 'config/initializers/app.rb'."
 
       def create_config_file
         template 'app.yml', File.join('config', 'app.yml')
