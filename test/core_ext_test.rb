@@ -25,6 +25,8 @@ class CoreExtTest < Test::Unit::TestCase
   }
   
   def test_hash_dot_syntax
+    puts "Testing HashWithIndifferentAccess dot syntax (eg: App.emails.ceo translates to App['emails']['ceo'])..."
+    
     hash_with_indifferent_access = HashWithIndifferentAccess.new @@all_hash
     
     assert_equal 'ceo@example.com', hash_with_indifferent_access.emails.team.ceo
@@ -32,6 +34,8 @@ class CoreExtTest < Test::Unit::TestCase
   end
   
   def test_hash_deep_update
+    puts "Testing Hash deep update (Settings from test/development/staging/production environments override those from the 'all' environment)..."
+    
     all_hash_copy = Marshal.load Marshal.dump @@all_hash # Make a deep copy of @@all_hash (so that it maintains its state for subsequent tests)
     all_hash_copy.deep_update! @@dev_hash
     app_hash = HashWithIndifferentAccess.new all_hash_copy

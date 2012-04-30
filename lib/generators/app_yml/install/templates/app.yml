@@ -1,18 +1,19 @@
-# This is our global key-value store
+# This is the app's global key-value store. Retrieve settings from anywhere in the app with App.setting.nested_setting syntax.
 #
-# Note that settings from the current environment will override settings with the same name from the :all section.
+# Note: Settings from the current environment (test/development/staging/production) will override settings
+#   with the same name from the 'all' section.
 #
-# For example, the following config will result in this hash: App.facebook = { :app_id => 1234, :namespace => 'canvas_dev' }
-#  
-#   all:
-#     facebook:
-#       app_id: 1234
-#       namespace: canvas_all
-#   development:
-#     facebook:
-#       namespace: canvas_dev
+# Example: The following config will result in this resultant hash: App.emails = { :admin => 'admin@localhost', :support => 'support@example.com' }
 #
-# Retrieve settings anywhere: App.facebook.app_id will return 1234
+# all:
+#   emails:
+#     admin: admin@example.com
+#     support: support@example.com
+# development:
+#   emails:
+#     admin: admin@localhost
+#
+# In this example, 'App.emails.admin' will return 'admin@localhost'.
 
 all:
   emails:

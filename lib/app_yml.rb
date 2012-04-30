@@ -1,5 +1,6 @@
 require 'app_yml/core_ext'
+require 'app_yml/application_controller_ext'
 
-# Thanks to http://sickpea.com/2009/6/rails-app-configuration-in-10-lines for this idea
+# Public: Initializes the 'AppYml' module. All functionality is contained 'lib/app_yml'.
 module AppYml
 end

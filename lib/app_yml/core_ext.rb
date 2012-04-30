@@ -1,5 +1,16 @@
+# Public: Extends Ruby's Hash class to provide a method for performing a deep update on a hash.
 class Hash
-  # Allows us to override app.yml settings from the 'all' environment with the current environment with unlimited nesting
+  # Public: Performs an in-place deep update on the calling hash with the provided 'new_hash'. Allows us to override 'app.yml'
+  # settings from the 'all' environment with the current environment (test/development/staging/production) with unlimited nesting.
+  #
+  # new_hash - The hash to copy over the calling hash.
+  #
+  # Examples
+  #
+  #   { :email => 'email@example.com', :name => 'Graham Swan' }.deep_update!({ :email => 'new_email@example.com' })
+  #   => { :email => 'new_email@example.com', :name => 'Graham Swan' }
+  #
+  # Returns the calling hash with the updated values.
   def deep_update! new_hash={}
     new_hash.each_pair do |key, val|
       if val.class.eql? Hash
@@ -13,58 +24,22 @@ class Hash
   end
 end
 
+# Public: Extends Rails' HashWithIndifferentAccess class to provide a method for accessing a hash's values with dot syntax.
 module ActiveSupport
   class HashWithIndifferentAccess < Hash
-    # Causes {}.arg to call {}[:arg]
-    #
-    # Eg: { :country => 'Canada' }.country would call { :country => 'Canada' }[:country] == 'Canada'
+    # Public: Causes '{}.arg' to call '{}[:arg]'.
     #
     # Note: None of the HashWithIndifferentAccess methods will work here. (http://as.rubyonrails.org/classes/HashWithIndifferentAccess.html)
-    #       The actual methods will invoke their expected functionality.
-    #       These are: convert_key
-    #                  convert_value
-    #                  default
-    #                  delete
-    #                  dup
-    #                  fetch
-    #                  key?
-    #                  merge
-    #                  new
-    #                  stringify_keys!
-    #                  symbolize_keys!
-    #                  to_hash
-    #                  to_options!
-    #                  update
-    #                  values_at
+    #   The aforementioned methods will invoke their expected functionality.
+    #
+    # Examples
+    #
+    #   (HashWithIndifferentAccess.new({ :country => 'Canada' })).country
+    #   => 'Canada'
+    #
+    # Returns the calling hash with the updated values.
     def method_missing(method, *args)
       self[method]
     end
   end
-end
-
-
-
-
-
-
-
-
-require 'action_controller'  # Ensure ActionController::Base is defined
-
-ActionController::Base.class_eval do
-  private
-
-  # Private: Refreshes app.yml settings if they've changed.
-  #
-  # Provides a global App object holding project-wide settings.
-  def _reload_app_yml
-    App::build_settings_hash
-  end
-end
-
-ActionController::Base.instance_eval do
-  helper_method :_reload_app_yml
-
-  # Thanks to http://hemju.com/2011/02/11/rails-3-quicktip-auto-reload-lib-folders-in-development-mode/ for this idea
-  before_filter :_reload_app_yml, :if => Proc.new { defined? App }
 end
