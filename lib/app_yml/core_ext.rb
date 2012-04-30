@@ -58,7 +58,7 @@ ActionController::Base.class_eval do
   #
   # Provides a global App object holding project-wide settings.
   def _reload_app_yml
-    #AppYml::build_settings_hash
+    AppYml::build_settings_hash
   end
 end
 
