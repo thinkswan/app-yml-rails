@@ -3,7 +3,7 @@
 **Bug Fixes:**
 
   - Fixed the `Hash.deep_update!` bug that prevented the Rails' server from booting
-  - Settings for a specific environment which are *not* defined in the **'all'** environment are now included
+  - Settings for a specific environment which are *not* defined in the 'all' environment are now included
 
 
 ## 0.1.0 (Apr 30, 2012)
