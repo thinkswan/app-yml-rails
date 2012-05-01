@@ -1,6 +1,6 @@
 # app-yml-rails
 
-This gem provides a Rails application with project-wide settings via an **app.yml** file.
+This gem provides a Rails application with project-wide settings via an **app.yml** file. Settings can be accessed anywhere: controllers, helpers, views, models, tests, in the console, etc.
 
 ## Features
 
