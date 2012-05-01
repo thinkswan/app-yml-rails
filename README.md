@@ -15,6 +15,10 @@ Add the following line to your project's **Gemfile**:
 
     gem 'app-yml-rails'
 
+Install the gem using **Bundler**:
+
+    $ bundle
+
 Install the config and initializer files:
 
     $ rails generate app_yml:install
